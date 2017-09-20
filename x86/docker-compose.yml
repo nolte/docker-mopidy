@@ -1,13 +1,13 @@
 #https://hub.docker.com/r/wernight/mopidy/
 mopidy:
   build: ../.
-  dockerfile: DockerfileX86
+  dockerfile: Dockerfile
   volumes:
     - ../mopidy.conf:/var/lib/mopidy/.config/mopidy/mopidy.conf
-  expose: 
+  expose:
     - "6379"
-  ports: 
+  ports:
     - "6600:6600"
-    - "6680:6680" 
-  command: "mopidy -v --config /var/lib/mopidy/.config/mopidy/mopidy.conf"    
+    - "6680:6680"
+  command: "mopidy -v --config /var/lib/mopidy/.config/mopidy/mopidy.conf"
   net: "host"

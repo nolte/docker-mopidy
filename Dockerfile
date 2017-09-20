@@ -12,7 +12,6 @@ RUN apt-get update && apt-get install mopidy=${MOPDIY_VERSION} mopidy-dleyna -y
 RUN curl -L https://bootstrap.pypa.io/get-pip.py | python
 RUN pip install Mopidy-Moped --upgrade
 RUN pip install Mopidy-dLeyna --upgrade
-RUN pip install Mopidy-API-Explorer
 RUN pip install mopidy-musicbox-webclient --upgrade
 
 # Default configuration

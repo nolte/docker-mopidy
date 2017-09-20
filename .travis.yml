@@ -1,0 +1,12 @@
+sudo: required
+services:
+  - docker
+env:
+  matrix:
+  - MOPDIY_VERSION=2.1.0-1
+
+script:
+  - docker build -t nolte/mopidy:$(echo $MOPDIY_VERSION) -f Dockerfile --build-arg MOPDIY_VERSION=${MOPDIY_VERSION} .
+
+notifications:
+  webhooks: https://keenio-gateway.herokuapp.com/build

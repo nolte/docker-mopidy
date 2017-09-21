@@ -5,7 +5,7 @@ services:
 env:
   global:
   - TRAVISCI_SCRIPT_DIR=/tmp/ci_scripts
-  - secure: IJpYAChB49uDxV5ZYdFoJbBewtODRmsdDUWKoQIo5w/j16hdg4B00jS5i3YBx5dhrtMHmxabXrEWcVTNWUkB9SoqnNTuj5J+ggWelu2vdDFLiCWE5ZJdo6gW4+2W3Yiz9wrc04zHA30jbcz1HIA+dPJgyuU0pKApI/ErHiHSfTA5u0OiUTGDC3JZX83vi9uyAOuGmDxwXrWPxsU0ZpVfzA6LhnpYrYcTiaaSpa5657zlUXNIjLHipQx09TOHlYpixghEKYcCZhaumPCXOqVkzx9fwZIj5uF6Rqr2qupcDkT5ZpndoKbo76H/SKuY66JYMWR6an8vAp1wAg11DNLNxOST7mdGY74GT0/wo5JuceH7iCIRVf0PSQhhOdhH8cpXkZIXzAZlrzfdSp94NInBQeQst+v0fxxDHeL69Y3S4W99Bc2W48fxTwhK2cjMrIfGcAOrs9lvNNEr9CKL3N3BySvhwlOfBzDC/CkBd9/hRwhz/f37LKlnQaqunZFx6z1AcD3wm0+t93OuSt7FZMl8Ke3C9zp1stOCfPu3/TGGtdqu0LeqAXp5/fUD+kh3v5tPiZDZ39omUqsBrW0117VwR3im3YzldHfGOBiAa+vbhaBABaNvHlpOweWgEVTC+S8MFyym95T8Ksd3tBoJ6xlrcYFDxvTPT1ybhf+2zfwLu2g=
+  - DOCKER_USERNAME=nolte
   - secure: aUXrvocxiT9HtF+dc/XIObwbCDnndJU9lGrc5uYdI9lASYtxeuWr1XqaeGeMTsp5+C/z3aZ8OHjd/T97mZrPcGV3ybmS6WwfZd3FFMv6NtA7X1BEQY0OpII3SxWOmnAAjvXXWiFeqfUdJTwPaFSE+goi20ODFGVZkbB5c5KuXngsn3EKi65Y/x/zgUCuV3ptN8ZGLKm8K/Q+MdYgyiii1vhe91eudB3+kQ5opn7B618xFhgiVigDq4PabBky93k/7L1ctDUP4h8WY5GuIMpAns9IQj8BhI/FCMTRjIJi4vDtpf/sFMF9W5U+BvuBCg7sqeqOS5OIov3mqHF1oXtu15jIUtZrdCSnJOOFvoHafxiDKL4T8fw0/gFgbIhqH8yfnBjicvYQvPxjqhKDAGLL9WP5nq7a1O034IGfTHoQkOwHHsJOn3NeeZJ8cqqSeSZ3afbH5XpIMB7c3hLOmNwMQ8aNVc+egnMFKuTloOiVmjQR8nqvxlXrKmmneFIMGhdbLDGeCkWVhmA6Vx+RLhBa6kf+L+Xh7rGp9etZ13IbNVdj44B8IqXOxVASh9VU93j9cE/BcvOf8X9wT8W2p3BtMjeN0V5ZjjTSjqlJ4IQR6Qz7VqxnX2LH2ArzFZXVCRbfUCD3VrRB41JEKIBLk8o+ivk8WPlmB7P2+/syPefApqQ=
   matrix:
   - MOPDIY_VERSION=2.1.0-1
@@ -17,7 +17,7 @@ notifications:
 
 before_install:
   - mkdir -p $TRAVISCI_SCRIPT_DIR
-  - wget https://gist.githubusercontent.com/nolte/33a1a963d8161db0641b59f26d794e01/raw/b036e5db7b5d3dafcb47b93a95950a6648267d3a/dockerhub_deploy.sh -O $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh
+  - wget https://gist.githubusercontent.com/nolte/33a1a963d8161db0641b59f26d794e01/raw/23aa60edce302988412023776afa77cb620b27ff/dockerhub_deploy.sh -O $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh
   - chmod u+x $TRAVISCI_SCRIPT_DIR/*
 
 jobs:

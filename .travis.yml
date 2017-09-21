@@ -29,6 +29,6 @@ jobs:
       deploy:
         # only executed on master branch
         - provider: script
-          script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD nolte/rpi-mopidy:$(echo $MOPDIY_VERSION) rpi-mopidy
+          script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD nolte/rpi-mopidy:$(echo $MOPDIY_VERSION) rpi-mopidy development
           on:
             all_branches: true

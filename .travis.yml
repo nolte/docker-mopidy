@@ -28,3 +28,5 @@ jobs:
       # only executed on master branch
       - provider: script
         script: echo "try deploy"
+        on:
+          all_branches: true

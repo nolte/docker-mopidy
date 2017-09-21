@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install libpciaccess0  mopidy=${MOPDIY_VERSION} mo
 
 RUN curl -L https://bootstrap.pypa.io/get-pip.py | python
 RUN pip install Mopidy-Moped --upgrade
-RUN pip install 'Mopidy-dLeyna'
+RUN pip install Mopidy-dLeyna --upgrade
 RUN pip install mopidy-musicbox-webclient --upgrade
 
 

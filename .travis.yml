@@ -3,6 +3,8 @@ language: bash
 services:
   - docker
 env:
+  global:
+  - TRAVISCI_SCRIPT_DIR=/tmp/ci_scripts
   matrix:
   - MOPDIY_VERSION=2.1.0-1
 
@@ -12,9 +14,9 @@ notifications:
 # https://gist.githubusercontent.com/nolte/33a1a963d8161db0641b59f26d794e01/raw/b036e5db7b5d3dafcb47b93a95950a6648267d3a/dockerhub_deploy.sh
 
 before_install:
-  - mkdir -p /tmp/buildscripts
-  - wget https://gist.githubusercontent.com/nolte/33a1a963d8161db0641b59f26d794e01/raw/b036e5db7b5d3dafcb47b93a95950a6648267d3a/dockerhub_deploy.sh -O /tmp/buildscripts/dockerhub_deploy.sh
-  - chmod u+x /tmp/buildscripts/*
+  - mkdir -p $TRAVISCI_SCRIPT_DIR
+  - wget https://gist.githubusercontent.com/nolte/33a1a963d8161db0641b59f26d794e01/raw/b036e5db7b5d3dafcb47b93a95950a6648267d3a/dockerhub_deploy.sh -O $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh
+  - chmod u+x $TRAVISCI_SCRIPT_DIR/*
 
 jobs:
   include:
@@ -27,6 +29,6 @@ jobs:
       deploy:
         # only executed on master branch
         - provider: script
-          script: echo "try deploy"
+          script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD nolte/rpi-mopidy:$(echo $MOPDIY_VERSION) rpi-mopidy
           on:
             all_branches: true

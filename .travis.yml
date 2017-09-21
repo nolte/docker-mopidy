@@ -9,6 +9,13 @@ env:
 notifications:
   webhooks: https://keenio-gateway.herokuapp.com/build
 
+# https://gist.githubusercontent.com/nolte/33a1a963d8161db0641b59f26d794e01/raw/b036e5db7b5d3dafcb47b93a95950a6648267d3a/dockerhub_deploy.sh
+
+before_install:
+  - mkdir -p /tmp/buildscripts
+  - wget https://gist.githubusercontent.com/nolte/33a1a963d8161db0641b59f26d794e01/raw/b036e5db7b5d3dafcb47b93a95950a6648267d3a/dockerhub_deploy.sh -O /tmp/buildscripts/dockerhub_deploy.sh
+  - chmod u+x /tmp/buildscripts/*
+
 jobs:
   include:
     - stage: build
@@ -17,3 +24,7 @@ jobs:
     - script:
         - docker run --rm --privileged multiarch/qemu-user-static:register --reset
         - docker build -t nolte/rpi-mopidy:$(echo $MOPDIY_VERSION) -f DockerfileRPI --build-arg MOPDIY_VERSION=${MOPDIY_VERSION} .
+    deploy:
+      # only executed on master branch
+      - provider: script
+        script: echo "try deploy"

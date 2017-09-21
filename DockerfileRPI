@@ -1,6 +1,6 @@
 FROM resin/rpi-raspbian:jessie
 
-RUN apt-get update && apt-get install curl -y
+RUN apt-get update && apt-get install curl gstreamer1.0-alsa -y
 
 ARG MOPDIY_VERSION=2.1.0-1
 
@@ -15,7 +15,6 @@ RUN curl -L https://bootstrap.pypa.io/get-pip.py | python
 RUN pip install Mopidy-Moped --upgrade
 RUN pip install 'Mopidy-dLeyna'
 RUN pip install mopidy-musicbox-webclient --upgrade
-RUN pip install https://codeload.github.com/nolte/mopidy-mongodb-playlist/zip/dev
 
 
 

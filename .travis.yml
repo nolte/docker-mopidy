@@ -24,9 +24,9 @@ jobs:
     - script:
         - docker run --rm --privileged multiarch/qemu-user-static:register --reset
         - docker build -t nolte/rpi-mopidy:$(echo $MOPDIY_VERSION) -f DockerfileRPI --build-arg MOPDIY_VERSION=${MOPDIY_VERSION} .
-    deploy:
-      # only executed on master branch
-      - provider: script
-        script: echo "try deploy"
-        on:
-          all_branches: true
+      deploy:
+        # only executed on master branch
+        - provider: script
+          script: echo "try deploy"
+          on:
+            all_branches: true

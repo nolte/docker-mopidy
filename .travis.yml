@@ -13,11 +13,9 @@ env:
 notifications:
   webhooks: https://keenio-gateway.herokuapp.com/build
 
-# https://gist.githubusercontent.com/nolte/33a1a963d8161db0641b59f26d794e01/raw/b036e5db7b5d3dafcb47b93a95950a6648267d3a/dockerhub_deploy.sh
-
 before_install:
   - mkdir -p $TRAVISCI_SCRIPT_DIR
-  - wget https://gist.githubusercontent.com/nolte/33a1a963d8161db0641b59f26d794e01/raw/23aa60edce302988412023776afa77cb620b27ff/dockerhub_deploy.sh -O $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh
+  - wget https://gist.githubusercontent.com/nolte/33a1a963d8161db0641b59f26d794e01/raw/dockerhub_deploy.sh -O $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh
   - chmod u+x $TRAVISCI_SCRIPT_DIR/*
 
 jobs:
@@ -33,4 +31,6 @@ jobs:
         - provider: script
           script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD nolte/rpi-mopidy:$(echo $MOPDIY_VERSION) rpi-mopidy development
           on:
-            all_branches: true
+            branch: development
+        - provider: script
+          script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD nolte/rpi-mopidy:$(echo $MOPDIY_VERSION) rpi-mopidy latest

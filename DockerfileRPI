@@ -9,7 +9,7 @@ RUN curl --insecure -L https://apt.mopidy.com/mopidy.gpg -o /tmp/mopidy.gpg
 RUN curl --insecure -L https://apt.mopidy.com/mopidy.list -o /etc/apt/sources.list.d/mopidy.list
 RUN apt-key add /tmp/mopidy.gpg
 
-RUN apt-get update && apt-get install libpciaccess0  mopidy=${MOPDIY_VERSION} mopidy-dleyna -y
+RUN apt-get update && apt-get install libpciaccess0  mopidy=${MOPDIY_VERSION} mopidy-dleyna dleyna-server -y
 
 RUN curl -L https://bootstrap.pypa.io/get-pip.py | python
 RUN pip install Mopidy-Moped --upgrade

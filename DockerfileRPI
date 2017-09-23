@@ -1,0 +1,35 @@
+FROM resin/rpi-raspbian:jessie
+
+RUN apt-get update && apt-get install curl gstreamer1.0-alsa -y
+
+ARG MOPDIY_VERSION=2.1.0-1
+
+# Dependencyies for mopidy base
+RUN curl --insecure -L https://apt.mopidy.com/mopidy.gpg -o /tmp/mopidy.gpg
+RUN curl --insecure -L https://apt.mopidy.com/mopidy.list -o /etc/apt/sources.list.d/mopidy.list
+RUN apt-key add /tmp/mopidy.gpg
+
+RUN apt-get update && apt-get install libpciaccess0  mopidy=${MOPDIY_VERSION} mopidy-dleyna -y
+
+RUN curl -L https://bootstrap.pypa.io/get-pip.py | python
+RUN pip install Mopidy-Moped --upgrade
+RUN pip install Mopidy-dLeyna --upgrade
+RUN pip install mopidy-musicbox-webclient --upgrade
+
+
+
+# Default configuration
+ADD mopidy.conf /var/lib/mopidy/.config/mopidy/mopidy.conf
+
+RUN chown mopidy:audio -R /var/lib/mopidy/.config
+
+# Run as mopidy user
+USER mopidy
+
+VOLUME /var/lib/mopidy/local
+VOLUME /var/lib/mopidy/media
+
+EXPOSE 6600
+EXPOSE 6680
+
+CMD ["/usr/bin/mopidy"]

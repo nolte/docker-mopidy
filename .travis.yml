@@ -38,5 +38,4 @@ jobs:
           script: $TRAVISCI_SCRIPT_DIR/dockerhub_deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD nolte/rpi-mopidy:$(echo $MOPDIY_VERSION) rpi-mopidy $TRAVIS_TAG
           on:
             tags: true
-            all_branches: true
-            condition: "$TRAVIS_TAG =~ ^v*$"
+            all_branches: false            

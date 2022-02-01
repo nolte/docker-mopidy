@@ -1,25 +1,26 @@
 # Docker Mopidy Container
 
-[![Build Status](https://travis-ci.org/nolte/docker-mopidy.svg?branch=master)](https://travis-ci.org/nolte/docker-mopidy)
-
 [Mopidy](https://github.com/mopidy/mopidy) Container with Mopidy-dLeyna support.
 
-
-## amd64
-[![](https://images.microbadger.com/badges/image/nolte/mopidy.svg)](https://microbadger.com/images/nolte/mopidy "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/nolte/mopidy.svg)](https://microbadger.com/images/nolte/mopidy "Get your own version badge on microbadger.com")
-
 **build**
+
+
+
+```sh
+ docker build -t nolte/mopidy:dirty -f Dockerfile .
 ```
- docker build -t nolte/mopidy:development -f Dockerfile .
+
+```sh 
+docker run --rm \
+    --user root --device /dev/snd \
+    -v $(pwd)/mopidy.conf:/root/.config/mopidy/mopidy.conf \
+    -v $HOME/Musik/:/var/lib/mopidy/media:ro \
+    -p 6600:6600 -p 6680:6680 \
+    nolte/mopidy:dirty \
+    gst-launch-1.0 audiotestsrc ! autoaudiosink
 ```
 
 
-## Armhf
-[![](https://images.microbadger.com/badges/image/nolte/rpi-mopidy.svg)](https://microbadger.com/images/nolte/rpi-mopidy "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/nolte/rpi-mopidy.svg)](https://microbadger.com/images/nolte/rpi-mopidy "Get your own version badge on microbadger.com")
+## Links
 
-**build**
-```
- docker build -t nolte/rpi-mopidy:development -f DockerfileRPI .
-```
+* [multi-arch-images](https://www.docker.com/blog/multi-arch-images/)

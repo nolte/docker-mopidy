@@ -2,13 +2,7 @@
 
 [Mopidy](https://github.com/mopidy/mopidy) Container with Mopidy-dLeyna support.
 
-**build**
-
-
-
-```sh
- docker build -t nolte/mopidy:dirty -f Dockerfile .
-```
+## Usage
 
 ```sh 
 docker run --rm \
@@ -20,7 +14,22 @@ docker run --rm \
     gst-launch-1.0 audiotestsrc ! autoaudiosink
 ```
 
+## Build
+
+```sh
+ docker build -t nolte/mopidy:dirty -f Dockerfile .
+```
+### Buildx
+
+For Local arm build use [multi-arch-images](https://www.docker.com/blog/multi-arch-images/).
+
+```bash
+docker buildx build \
+    --platform \
+        linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 \
+    -t nolte/mopidy:dirty .
+```
 
 ## Links
 
-* [multi-arch-images](https://www.docker.com/blog/multi-arch-images/)
+* [helm-chart]() (planed)

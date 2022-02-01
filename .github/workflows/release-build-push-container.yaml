@@ -34,14 +34,15 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Determine tag
+        id: imagetag
         run: |
-          echo "::set-env name=IMAGE_TAG::${GITHUB_REF#refs/tags/}"
+          echo "::set-output name=image_tag::${GITHUB_REF#refs/tags/}"
 
       - name: Build and push container image
         run: |
           docker buildx build \
             -t "${IMAGE_NAMESPACE}/${IMAGE_NAME}:latest" \
-            -t "${IMAGE_NAMESPACE}/${IMAGE_NAME}:${IMAGE_TAG}" \
+            -t "${IMAGE_NAMESPACE}/${IMAGE_NAME}:${{ steps.imagetag.outputs.image_tag }}" \
             --platform linux/amd64,linux/arm/v7,linux/arm64 \
             --push \
             -f Dockerfile \

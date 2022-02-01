@@ -5,7 +5,8 @@ RUN apt-get update \
     wget \
     curl \
     gnupg2 \
-    python3-distutils
+    python3-distutils \
+    python3-pip
 
 ARG MOPDIY_VERSION=3.2.0-1
 
@@ -18,11 +19,10 @@ RUN apt-get update \
     mopidy=${MOPDIY_VERSION} \
     mopidy-dleyna
 
-RUN curl -L https://bootstrap.pypa.io/get-pip.py | python3
-
 COPY requirements.txt /tmp/requirements.txt
 
-RUN pip install -r /tmp/requirements.txt --upgrade
+RUN pip3 install --upgrade pip \
+  && pip3 install -r /tmp/requirements.txt --upgrade
 
 # Default configuration
 ADD mopidy.conf /var/lib/mopidy/.config/mopidy/mopidy.conf

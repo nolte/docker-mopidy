@@ -8,7 +8,7 @@ RUN apt-get update \
     libffi-dev \
     python3-distutils \
     python3-pip \
-    # Clean-up 
+    # Clean-up
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ~/.cache
 
@@ -24,7 +24,7 @@ RUN apt-get update \
     mopidy-dleyna \
     mopidy-mpd \
     libspotify-dev \
-    # Clean-up 
+    # Clean-up
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ~/.cache
 

@@ -1,3 +1,4 @@
 Mopidy-dLeyna
 Mopidy-Local
 mopidy-musicbox-webclient
+Mopidy-Spotify

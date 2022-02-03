@@ -36,6 +36,6 @@ jobs:
         run: |
           docker buildx build \
             -t "${IMAGE_NAMESPACE}/${IMAGE_NAME}:dirty" \
-            --platform linux/amd64,arm/v6,linux/arm/v7 \
+            --platform linux/amd64,linux/arm/v6,linux/arm/v7 \
             -f Dockerfile \
             .

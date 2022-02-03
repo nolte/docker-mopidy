@@ -43,7 +43,7 @@ jobs:
           docker buildx build \
             -t "${IMAGE_NAMESPACE}/${IMAGE_NAME}:latest" \
             -t "${IMAGE_NAMESPACE}/${IMAGE_NAME}:${{ steps.imagetag.outputs.image_tag }}" \
-            --platform linux/amd64,arm/v6,linux/arm/v7 \
+            --platform linux/amd64,linux/arm/v6,linux/arm/v7 \
             --push \
             -f Dockerfile \
             .

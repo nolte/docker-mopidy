@@ -1,5 +1,9 @@
 # Docker Mopidy Container
 
+[![Docker Image CI](https://github.com/nolte/docker-mopidy/actions/workflows/release-build-push-container.yaml/badge.svg)](https://github.com/nolte/docker-mopidy/actions/workflows/release-build-push-container.yaml) [![Docker Pulls](https://img.shields.io/docker/pulls/nolte/mopidy.svg)](https://hub.docker.com/r/nolte/mopidy/)
+
+----
+
 [Mopidy](https://github.com/mopidy/mopidy) Container with Mopidy-dLeyna support.
 
 ## Usage

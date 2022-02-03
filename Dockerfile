@@ -17,7 +17,11 @@ RUN wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/buster
 RUN apt-get update \
   && apt-get install -y \
     mopidy=${MOPDIY_VERSION} \
-    mopidy-dleyna
+    mopidy-dleyna \
+    mopidy-spotify \
+    mopidy-mpd  \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ~/.cache
 
 COPY requirements.txt /tmp/requirements.txt
 

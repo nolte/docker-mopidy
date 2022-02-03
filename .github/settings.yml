@@ -6,5 +6,5 @@ _extends: gh-plumbing:.github/commons-settings.yml
 repository:
   name: docker-mopidy
   description: Docker Container for Mopidy Music Server.
-  homepage: https://nolte.github.io/docker-mopidy
-  topics: mopidy
+  homepage: ""
+  topics: mopidy, audio

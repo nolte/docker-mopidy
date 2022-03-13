@@ -24,7 +24,9 @@ RUN apt-get update \
     mopidy-dleyna \
     mopidy-mpd \
     libspotify-dev \
-    # Clean-up
+    libspotify12 \
+    python3-spotify \
+ # Clean-up
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ~/.cache
 

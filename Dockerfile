@@ -5,8 +5,12 @@ RUN apt-get update \
     wget \
     curl \
     gnupg2 \
+    libffi-dev \
     python3-distutils \
-    python3-pip
+    python3-pip \
+    # Clean-up
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ~/.cache
 
 ARG MOPDIY_VERSION=3.2.0-1
 
@@ -18,10 +22,11 @@ RUN apt-get update \
   && apt-get install -y \
     mopidy=${MOPDIY_VERSION} \
     mopidy-dleyna \
-    mopidy-spotify \
-    mopidy-mpd  \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ~/.cache
+    mopidy-mpd \
+    libspotify-dev \
+    # Clean-up
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ~/.cache
 
 COPY requirements.txt /tmp/requirements.txt
 

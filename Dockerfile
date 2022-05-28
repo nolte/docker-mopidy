@@ -12,11 +12,13 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ~/.cache
 
-ARG MOPDIY_VERSION=3.2.0-1
+ARG MOPDIY_VERSION=3.3.0-1
 
 # Dependencyies for mopidy base
-RUN wget -q -O - https://apt.mopidy.com/mopidy.gpg | apt-key add -
-RUN wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/buster.list
+RUN mkdir -p /usr/local/share/keyrings \
+  && wget -q -O /usr/local/share/keyrings/mopidy-archive-keyring.gpg \
+    https://apt.mopidy.com/mopidy.gpg \
+  && wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/buster.list
 
 RUN apt-get update \
   && apt-get install -y \
